@@ -24,7 +24,9 @@ class GameForm extends React.Component {
       player1Wins: 0,
       player2Wins: 0,
       turn: 1,
-      board: board
+      board: board,
+      status: "playing",
+      statusMessage: ""
     }
 
     const gameId = generateUUID();
