@@ -1,11 +1,43 @@
 import React from 'react';
+import { generateUUID } from '../helpers';
+import base from '../base';
 
 class GameForm extends React.Component {
+  constructor() {
+    super();
+    this.saveInitialToDb = this.saveInitialToDb.bind(this);
+  }
+
   goToGame(e) {
     e.preventDefault();
     // this.context.router.transitionTo(`/store/${storeId}`);
     const player1 = this.player1Input.value;
     const player2 = this.player2Input.value;
+    const board = {};
+    for (var i = 1; i <= 9; i++) {
+      board[i] = "";
+    }
+
+    const initialInfo = {
+      player1Name: player1,
+      player2Name: player2,
+      player1Wins: 0,
+      player2Wins: 0,
+      turn: 1,
+      board: board
+    }
+
+    const gameId = generateUUID();
+
+    this.saveInitialToDb(initialInfo, gameId);
+  }
+
+  saveInitialToDb(initialInfo, gameId) {
+    base.post(`game/${gameId}`, {
+      data: initialInfo
+    }).then(() => {
+      this.context.router.transitionTo(`/game/${gameId}`);
+    });
   }
 
   render() {

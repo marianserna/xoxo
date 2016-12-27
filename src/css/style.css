@@ -1,3 +1,20 @@
+.boardContainer {
+  width: 100vw;
+  max-width: 500px;
+  height: 100vw;
+  max-height: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0 auto;
+}
+.boardCell {
+  width: 33.3%;
+  height: 33.3%;
+  border: 1px solid #f00;
+}
 article,
 aside,
 details,
