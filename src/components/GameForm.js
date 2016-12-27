@@ -44,13 +44,16 @@ class GameForm extends React.Component {
 
   render() {
     return (
-      <form className="gameForm" onSubmit={(e) => {this.goToGame(e)}}>
-        <label htmlFor="player1">Player 1</label>
-        <input ref={(input) => {this.player1Input = input}} type="text" name="player1"/>
-        <label htmlFor="player2">Player 2</label>
-        <input ref={(input) => {this.player2Input = input}} type="text" name="player2"/>
-        <button type="submit">Start</button>
-      </form>
+      <div>
+        <div className="title">X &#8902; O &#8902; X &#8902; O</div>
+        <form className="gameForm" onSubmit={(e) => {this.goToGame(e)}}>
+          <label htmlFor="player1">Player 1</label>
+          <input ref={(input) => {this.player1Input = input}} type="text" name="player1"/>
+          <label htmlFor="player2">Player 2</label>
+          <input ref={(input) => {this.player2Input = input}} type="text" name="player2"/>
+          <button type="submit">Start</button>
+        </form>
+      </div>
     )
   }
 }

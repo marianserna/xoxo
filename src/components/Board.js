@@ -5,8 +5,8 @@ class Board extends React.Component {
     const cells = [];
     for (let i = 1; i <= 9; i++) {
       cells.push(
-        <div className="boardCell" key={i} onClick={(e) => {this.props.recordTurn(i)}}>
-          {this.props.board[i]}
+        <div className={`boardCell ${this.props.board[i]}`} key={i} onClick={(e) => {this.props.recordTurn(i)}}>
+          <div className="letter">{this.props.board[i]}</div>
         </div>
       );
     }

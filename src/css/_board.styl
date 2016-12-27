@@ -1,4 +1,5 @@
 .boardContainer
+  padding-top 50px
   width 100vw
   max-width 500px
   height 100vw
@@ -8,6 +9,22 @@
   margin 0 auto
 
 .boardCell
+  background #fff
   width 33.3%
   height 33.3%
-  border 1px solid red
+  display flex
+  justify-content center
+  align-items center
+  box-shadow 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)
+
+  &:hover
+    cursor pointer
+    box-shadow 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)
+
+.letter
+  background #fff
+  font-size 6rem
+  color #3AF4D5
+
+.boardCell.X .letter
+  color #F92A82
