@@ -92,7 +92,12 @@ button[type=submit]:hover,
 }
 .title {
   color: #fff5c3;
-  padding: 30px 50px;
+  padding: 20px 25px;
+}
+@media screen and (max-width: 600px) {
+  .title {
+    padding: 10px 5px;
+  }
 }
 form {
   width: 70vw;
@@ -104,6 +109,11 @@ form {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+@media screen and (max-width: 600px) {
+  form {
+    margin: 25px auto;
+  }
 }
 label {
   padding: 20px;
