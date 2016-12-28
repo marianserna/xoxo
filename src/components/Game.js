@@ -11,6 +11,7 @@ class Game extends React.Component {
     this.recordTurn = this.recordTurn.bind(this);
     this.checkWinner = this.checkWinner.bind(this);
     this.resetBoard = this.resetBoard.bind(this);
+    this.goBack = this.goBack.bind(this);
 
     this.state = {
       game: false
@@ -107,6 +108,10 @@ class Game extends React.Component {
     return game;
   }
 
+  goBack() {
+    this.context.router.transitionTo(`/`);
+  }
+
   render() {
 
     if(!this.state.game) {
@@ -129,13 +134,18 @@ class Game extends React.Component {
           player2Name={this.state.game.player2Name}
           turn={this.state.game.turn}
         />
-      {
-        (this.state.game.status === "winner" ||  this.state.game.status === "draw") &&
-        <Status status={this.state.game.status} statusMessage={this.state.game.statusMessage} resetBoard={this.resetBoard} />
-      }
+        {
+          (this.state.game.status === "winner" ||  this.state.game.status === "draw") &&
+          <Status status={this.state.game.status} statusMessage={this.state.game.statusMessage} resetBoard={this.resetBoard} />
+        }
+        <button className="back" onClick={(e) => {this.goBack()}}>BACK</button>
       </div>
     )
   }
+}
+
+Game.contextTypes = {
+  router: React.PropTypes.object
 }
 
 export default Game;
