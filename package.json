@@ -5,7 +5,6 @@
   "devDependencies": {
     "autoprefixer-stylus": "0.10.0",
     "concurrently": "3.0.0",
-    "react-scripts": "0.6.1",
     "stylus": "0.54.5"
   },
   "dependencies": {
@@ -14,6 +13,7 @@
     "react": "15.3.2",
     "react-addons-css-transition-group": "15.3.2",
     "react-dom": "15.3.2",
+    "react-scripts": "0.6.1",
     "react-router": "4.0.0-alpha.3"
   },
   "scripts": {
