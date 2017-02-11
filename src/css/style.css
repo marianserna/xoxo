@@ -309,6 +309,10 @@ input::-moz-focus-inner {
   padding-left: 20px;
   background: #7bced7;
 }
+.SocialMediaShareButton {
+  position: absolute;
+  right: 15px;
+}
 .statusContainer {
   position: absolute;
   top: 150px;
