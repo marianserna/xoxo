@@ -147,6 +147,10 @@ button[type=submit]:hover,
 .gameArea .chat li.player-1 {
   background: #80deea;
 }
+.gameArea .chat li.player-1 .chat-sender-name {
+  padding-bottom: 10px;
+  color: #ab47bc;
+}
 .gameArea .chat li.player-2 {
   background: #fff;
 }
