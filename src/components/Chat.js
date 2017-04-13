@@ -36,7 +36,7 @@ export default class Chat extends React.Component {
       }
 
       return(
-        <li key={key}>
+        <li key={key} className={`player-${message.playerNumber}`}>
           {sender}
           {message.message}
         </li>

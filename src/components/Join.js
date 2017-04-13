@@ -15,7 +15,9 @@ export default class Join extends React.Component {
 
   render() {
     return(
-      <div className="join">Joining...</div>
+      <div className="loader">
+        <p>Joining...</p>
+      </div>
     )
   }
 }

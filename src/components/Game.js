@@ -72,6 +72,7 @@ class Game extends React.Component {
     const timestamp = (new Date()).getTime();
 
     const newChat = {
+      'playerNumber': this.playerNumber(),
       'senderName': this.playerName(),
       'message': message,
       'timestamp': timestamp
@@ -92,6 +93,10 @@ class Game extends React.Component {
     } else {
       return this.state.game.player2Name;
     }
+  }
+
+  playerNumber = () => {
+    return this.token === this.state.game.player1Token ? 1 : 2;
   }
 
   checkWinner(game) {
@@ -149,7 +154,9 @@ class Game extends React.Component {
 
     if(!this.state.game) {
       return (
-        <p>Loading...</p>
+        <div className="loader">
+          <p>Loading...</p>
+        </div>
       )
     }
 

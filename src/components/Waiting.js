@@ -55,12 +55,12 @@ export default class Waiting extends React.Component {
 
     return(
       <div className="waiting">
-        <h2>
+        <h2 className="wait-heading">
           Howdy <span className="playerName">{player1Name}</span>! Send a message to <span className="playerName">{player2Name}</span> to start the game!
         </h2>
 
         <div className="waiting-form-container">
-          <form className="gameForm" onSubmit={(e) => {this.sendToPhone(e)}}>
+          <form className="waiting-form" onSubmit={(e) => {this.sendToPhone(e)}}>
             <div className="player-input">
               <input ref={(input) => {this.phone = input}} type="tel" placeholder="+16471234567" name="tel"/>
             </div>
@@ -75,17 +75,12 @@ export default class Waiting extends React.Component {
           </form>
         </div>
 
+        <p className="copy-link">Or click to copy link</p>
+
         <CopyToClipboard text={this.state.url}
           onCopy={() => this.setState({copied: true})}>
           <div className="copy">
-            <span>{this.state.url}</span>
-            {
-              this.state.copied ?
-              <img src="/OK.png" alt="copy-to-clipboard"/>
-              :
-              <img src="/copyToClip.png" alt="copy-to-clipboard"/>
-            }
-
+            <span className="link">{this.state.url}</span>
           </div>
         </CopyToClipboard>
       </div>
