@@ -111,12 +111,28 @@ button[type=submit]:hover,
   position: absolute;
   top: 0;
   right: 0;
-  overflow-y: scroll;
 }
 @media screen and (max-width: 730px) {
   .gameArea .chat {
     display: none;
   }
+}
+.gameArea .chat ul {
+  overflow-y: scroll;
+  height: 80vh;
+}
+.gameArea .chat .chat-form {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  position: absolute;
+  height: auto;
+  left: 0;
+  bottom: 0;
+  border: 1px solid #f00;
+}
+.gameArea .chat .chat-form textarea {
+  width: 100%;
 }
 .back {
   display: none;
@@ -168,8 +184,10 @@ form {
   margin-right: 0;
 }
 .player-input input {
-  background-color: #333;
+  background-color: #fff;
   border: none;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  border-radius: 2px;
   -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   padding: 10px 60px 10px 15px;

@@ -12,27 +12,10 @@ class Game extends React.Component {
     this.recordTurn = this.recordTurn.bind(this);
     this.checkWinner = this.checkWinner.bind(this);
     this.resetBoard = this.resetBoard.bind(this);
-    this.goBack = this.goBack.bind(this);
+    this.token = localStorage.getItem('token');
 
     this.state = {
-      game: false,
-      fakeChat: {
-        '10': {
-          'senderName': 'name',
-          'message': 'lalalalla',
-          'time': (new Date).getTime()
-        },
-        '20': {
-          'senderName': 'name',
-          'message': 'lalalalla',
-          'time': (new Date).getTime()
-        },
-        '30': {
-          'senderName': 'name',
-          'message': 'lalalalla',
-          'time': (new Date).getTime()
-        }
-      }
+      game: false
     }
   }
 
@@ -50,12 +33,23 @@ class Game extends React.Component {
     base.removeBinding(this.ref);
   }
 
+  isMyTurn = () => {
+    let playerNumber = 1;
+    if (this.token === this.state.game.player2Token) {
+      playerNumber = 2;
+    }
+    return playerNumber === this.state.game.turn;
+  }
+
   recordTurn(cellNumber) {
     let game = {...this.state.game};
     if (game.board[cellNumber]) {
       return;
     }
     if (game.status !== 'playing') {
+      return;
+    }
+    if (!this.isMyTurn()) {
       return;
     }
     game.board[cellNumber] = game.turn === 1 ? "X" : "O";
@@ -74,8 +68,33 @@ class Game extends React.Component {
     this.setState({game});
   }
 
+  sendChatMsg = (message) => {
+    const timestamp = (new Date()).getTime();
+
+    const newChat = {
+      'senderName': this.playerName(),
+      'message': message,
+      'timestamp': timestamp
+    }
+
+    const newData = {...this.state.game.chat};
+    newData[timestamp] = newChat;
+
+    base.update(`game/${this.props.params.gameId}`, {
+      context: this,
+      data: {chat: newData}
+    });
+  }
+
+  playerName = () => {
+    if (this.token === this.state.game.player1Token) {
+      return this.state.game.player1Name;
+    } else {
+      return this.state.game.player2Name;
+    }
+  }
+
   checkWinner(game) {
-    console.log("checking winner");
     const board = game.board;
 
     const winningCombos = [
@@ -126,10 +145,6 @@ class Game extends React.Component {
     return game;
   }
 
-  goBack() {
-    this.context.router.transitionTo(`/`);
-  }
-
   render() {
 
     if(!this.state.game) {
@@ -161,7 +176,8 @@ class Game extends React.Component {
           />
           <Chat
             className="chat"
-            chat={this.state.fakeChat}
+            chat={this.state.game.chat}
+            sendChatMsg={this.sendChatMsg}
           />
         </div>
 
@@ -169,14 +185,9 @@ class Game extends React.Component {
           (this.state.game.status === "winner" ||  this.state.game.status === "draw") &&
           <Status status={this.state.game.status} statusMessage={this.state.game.statusMessage} resetBoard={this.resetBoard} />
         }
-        {/* <button className="back" onClick={(e) => {this.goBack()}}>BACK</button> */}
       </div>
     )
   }
-}
-
-Game.contextTypes = {
-  router: React.PropTypes.object
 }
 
 export default Game;
