@@ -1,5 +1,5 @@
 import React from 'react';
-import { generateUUID } from '../helpers';
+import { generateUUID, tokenize } from '../helpers';
 import base from '../base';
 
 class GameForm extends React.Component {
@@ -10,7 +10,6 @@ class GameForm extends React.Component {
 
   goToGame(e) {
     e.preventDefault();
-    // this.context.router.transitionTo(`/store/${storeId}`);
     const player1 = this.player1Input.value;
     const player2 = this.player2Input.value;
     const board = {};
@@ -21,10 +20,13 @@ class GameForm extends React.Component {
     const initialInfo = {
       player1Name: player1,
       player2Name: player2,
+      player1Token: tokenize(),
+      player2Token: '',
       player1Wins: 0,
       player2Wins: 0,
       turn: 1,
       board: board,
+      chat: {},
       status: "playing",
       statusMessage: ""
     }
@@ -38,20 +40,21 @@ class GameForm extends React.Component {
     base.post(`game/${gameId}`, {
       data: initialInfo
     }).then(() => {
-      this.context.router.transitionTo(`/game/${gameId}`);
+      this.context.router.transitionTo(`/waiting/${gameId}`);
     });
   }
 
   render() {
     return (
-      <div>
-        <div className="title">X &#8902; O &#8902; X &#8902; O</div>
+      <div className="form-container">
         <form className="gameForm" onSubmit={(e) => {this.goToGame(e)}}>
-          <label htmlFor="player1">Player 1</label>
-          <input ref={(input) => {this.player1Input = input}} type="text" name="player1"/>
-          <label htmlFor="player2">Player 2</label>
-          <input ref={(input) => {this.player2Input = input}} type="text" name="player2"/>
-          <button type="submit">Start</button>
+          <div className="player-input">
+            <input ref={(input) => {this.player1Input = input}} type="text" placeholder="Player 1" name="player1"/>
+          </div>
+          <div className="player-input">
+            <input ref={(input) => {this.player2Input = input}} type="text" placeholder="Player 2" name="player2"/>
+          </div>
+          <button type="submit">START</button>
         </form>
       </div>
     )

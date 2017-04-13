@@ -23,3 +23,13 @@ export function generateUUID(){
   });
   return uuid;
 }
+
+// Check if user has token, else create it
+export function tokenize() {
+  let token = localStorage.getItem('token');
+  if (!token) {
+    token = generateUUID();
+    localStorage.setItem('token', token);
+  }
+  return token;
+}

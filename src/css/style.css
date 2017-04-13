@@ -1,13 +1,14 @@
 * {
-  background: #ff7260;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 .boardContainer {
   padding-top: 50px;
   width: 100vw;
+  height: 100vh;
   max-width: 500px;
-  height: 100vw;
+  height: 100vh;
   max-height: 500px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -15,11 +16,15 @@
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin: 0 auto;
+  margin: 50px;
 }
 .boardCell {
-  background: #fff;
-  width: 33.3%;
-  height: 33.3%;
+  background: transparent;
+  border: 1px solid #333;
+  border-radius: 2px;
+  margin: 0.5%;
+  width: 32%;
+  height: 32%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -29,79 +34,114 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 .boardCell:hover {
   cursor: pointer;
+  background: #333;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 .letter {
-  background: #fff;
-  font-size: 6rem;
-  color: #3af4d5;
+  font-size: 4.5rem;
+  color: #ab47bc;
 }
 .boardCell.X .letter {
-  color: #f92a82;
+  color: #ff5a09;
 }
 button[type=submit],
 .playAgain {
-  width: 50%;
-  height: 80px;
-  margin: 50px auto;
-  font-size: 3rem;
-  background: #9bd7d5;
-  color: #fff;
-  border-radius: 50px;
+  height: 50px;
+  padding-left: 60px;
+  padding-right: 60px;
+  margin-left: 150px;
+  margin-top: 50px;
+  font-size: 2rem;
+  background: #ff5a09;
+  border-radius: 2px;
   border: none;
+  color: #fff;
+  outline: none;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 button[type=submit]:hover,
 .playAgain:hover {
-  background: #fff5c3;
-  color: #2a333c;
+  background: #ab47bc;
+  color: #fff;
+}
+@media screen and (max-width: 600px) {
+  button[type=submit],
+  .playAgain {
+    margin-left: 0;
+  }
+}
+.gameArea {
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow: hidden;
+}
+.gameArea .boardContainer {
+  width: 70%;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  margin-left: 200px;
+}
+@media screen and (max-width: 1030px) {
+  .gameArea .boardContainer {
+    width: 100%;
+    margin-left: 20px;
+  }
+}
+.gameArea .chat {
+  width: 30%;
+  height: 90vh;
+  margin-top: 10vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow-y: scroll;
+}
+@media screen and (max-width: 730px) {
+  .gameArea .chat {
+    display: none;
+  }
 }
 .back {
-  position: absolute;
-  bottom: 25px;
-  right: 25px;
-  height: 80px;
-  font-size: 3rem;
-  padding-left: 50px;
-  padding-right: 50px;
-  background: #9bd7d5;
-  color: #fff;
-  border-radius: 50px;
-  border: none;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: none;
 }
-@media screen and (max-width: 600px) {
-  .back {
-    position: absolute;
-    bottom: 80px;
-    right: 25px;
-    height: 65px;
-  }
-}
-.back:hover {
-  background: #fff5c3;
-  color: #2a333c;
-}
-.title {
-  color: #fff5c3;
-  padding: 20px 25px;
-}
-@media screen and (max-width: 600px) {
-  .title {
-    padding: 10px 5px;
-  }
+.form-container {
+  background: #000;
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-image: url("/landing.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 form {
-  width: 70vw;
-  margin: 70px auto;
+  width: 80%;
+  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -109,25 +149,49 @@ form {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-right: 80px;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 @media screen and (max-width: 600px) {
   form {
-    margin: 25px auto;
+    width: 100vw;
+    margin: 25px;
   }
 }
-label {
-  padding: 20px;
-  color: #fff;
+.player-input {
+  margin: 20px;
+  margin-right: 0;
 }
-input {
-  background-color: #2a333c;
+.player-input input {
+  background-color: #333;
   border: none;
-  border-radius: 50px;
-  padding: 20px;
-  color: #fff;
-}
-input:focus {
+  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  padding: 10px 60px 10px 15px;
+  margin-left: 25px;
+  color: #ff5a09;
+  text-align: left;
   outline: none;
+}
+.player-input input:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.player-input input:focus {
+  outline: none;
+}
+.player-input label {
+  color: #2a333c;
+  margin-right: 25px;
+}
+@media screen and (max-width: 600px) {
+  .player-input label {
+    width: 100%;
+  }
 }
 article,
 aside,
@@ -300,20 +364,20 @@ input::-moz-focus-inner {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #7bced7;
+  background: #333;
 }
 .player {
-  color: #fff;
-  font-size: 3rem;
+  font-size: 2rem;
   padding-right: 20px;
   padding-left: 20px;
-  background: #7bced7;
+  color: #fff59d;
 }
 .SocialMediaShareButton {
   position: absolute;
   right: 15px;
 }
 .statusContainer {
+  display: none;
   position: absolute;
   top: 150px;
   left: 25px;
@@ -344,9 +408,10 @@ input::-moz-focus-inner {
   }
 }
 .playAgain {
-  padding: 15px;
+  display: none;
 }
 .turn {
+  display: none;
   font-size: 5rem;
   position: absolute;
   bottom: 25px;
@@ -359,16 +424,27 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 body {
-  font-family: 'Vidaloka', serif;
+  font-family: 'Anonymous Pro', monospace;
   font-size: 2rem;
 }
 .title {
-  font-size: 5rem;
+  font-size: 6rem;
+  font-family: 'Elsie', cursive;
+}
+@media screen and (max-width: 600px) {
+  .title {
+    font-size: 4rem;
+  }
 }
 .letter {
-  font-family: 'Vidaloka', serif;
+  font-family: 'Anonymous Pro', monospace;
 }
 form label {
-  font-family: 'Yanone Kaffeesatz', sans-serif;
-  font-size: 3rem;
+  font-family: 'Anonymous Pro', monospace;
+  font-size: 2.2rem;
+}
+@media screen and (max-width: 600px) {
+  form label {
+    font-size: 1.3rem;
+  }
 }

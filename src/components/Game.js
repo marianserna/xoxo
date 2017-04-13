@@ -3,6 +3,7 @@ import ScoreBoard from './ScoreBoard';
 import Board from './Board';
 import Turn from './Turn';
 import Status from './Status';
+import Chat from './Chat';
 import base from '../base';
 
 class Game extends React.Component {
@@ -14,7 +15,24 @@ class Game extends React.Component {
     this.goBack = this.goBack.bind(this);
 
     this.state = {
-      game: false
+      game: false,
+      fakeChat: {
+        '10': {
+          'senderName': 'name',
+          'message': 'lalalalla',
+          'time': (new Date).getTime()
+        },
+        '20': {
+          'senderName': 'name',
+          'message': 'lalalalla',
+          'time': (new Date).getTime()
+        },
+        '30': {
+          'senderName': 'name',
+          'message': 'lalalalla',
+          'time': (new Date).getTime()
+        }
+      }
     }
   }
 
@@ -127,18 +145,31 @@ class Game extends React.Component {
           player1Wins={this.state.game.player1Wins}
           player2Wins={this.state.game.player2Wins}
         />
-        <Board board={this.state.game.board}
-          recordTurn={this.recordTurn}
-        />
-        <Turn player1Name={this.state.game.player1Name}
+
+        <Turn
+          className="turn"
+          player1Name={this.state.game.player1Name}
           player2Name={this.state.game.player2Name}
           turn={this.state.game.turn}
         />
+
+        <div className="gameArea">
+          <Board
+            className="board"
+            board={this.state.game.board}
+            recordTurn={this.recordTurn}
+          />
+          <Chat
+            className="chat"
+            chat={this.state.fakeChat}
+          />
+        </div>
+
         {
           (this.state.game.status === "winner" ||  this.state.game.status === "draw") &&
           <Status status={this.state.game.status} statusMessage={this.state.game.statusMessage} resetBoard={this.resetBoard} />
         }
-        <button className="back" onClick={(e) => {this.goBack()}}>BACK</button>
+        {/* <button className="back" onClick={(e) => {this.goBack()}}>BACK</button> */}
       </div>
     )
   }

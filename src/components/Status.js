@@ -6,10 +6,8 @@ class Status extends React.Component {
       <div className="statusContainer">
         {this.props.statusMessage}
         <button className="playAgain" onClick={(e) => {this.props.resetBoard()}}>
-          Play Again!
         </button>
       </div>
-
     )
   }
 }

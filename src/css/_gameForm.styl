@@ -1,27 +1,52 @@
-.title
-  color #FFF5C3
-  padding 20px 25px
-  @media screen and (max-width: 600px)
-    padding 10px 5px
+.form-container
+  background #000
+  width 100vw
+  height 100vh
+  display flex
+  justify-content center
+  align-items center
+  background-image url('/landing.svg')
+  background-size cover
+  background-repeat no-repeat
+  background-position center
 
 form
-  width 70vw
-  margin 70px auto
+  width 80%
+  height 100vh
   display flex
   flex-direction column
+  justify-content center
+  margin-right 80px
+  align-items flex-end
+
   @media screen and (max-width: 600px)
-    margin 25px auto
+    width 100vw
+    margin 25px
 
-label
-  padding 20px
-  color #fff
+.player-input
+  margin 20px
+  margin-right 0
 
-input
-  background-color #2A333C
-  border none
-  border-radius 50px
-  padding 20px
-  color #fff
-
-  &:focus
+  input
+    background-color #333333
+    border none
+    // box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    padding 10px 60px 10px 15px
+    margin-left 25px
+    color #FF5A09
+    text-align left
     outline none
+
+    &:hover
+      box-shadow 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+    &:focus
+      outline none
+
+  label
+    color #2A333C
+    margin-right 25px
+
+    @media screen and (max-width: 600px)
+      width 100%
