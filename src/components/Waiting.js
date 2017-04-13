@@ -31,6 +31,23 @@ export default class Waiting extends React.Component {
 
   sendToPhone(e) {
     e.preventDefault();
+
+    fetch('https://xoxo-endpoint.herokuapp.com/texts', {
+      method: 'post',
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      body: JSON.stringify({
+        'text': {
+          'to': this.phone.value,
+          'message': `Hey ${this.state.game.player2Name}! ${this.state.game.player1Name} wants to play TicTacToe! Go to ${this.state.url} to start the game.`
+        }
+      })
+    }).then(response => response.json()).then((data) => {
+      this.setState({
+        status: 'sent'
+      });
+    });
   }
 
   render() {
@@ -45,9 +62,16 @@ export default class Waiting extends React.Component {
         <div className="waiting-form-container">
           <form className="gameForm" onSubmit={(e) => {this.sendToPhone(e)}}>
             <div className="player-input">
-              <input ref={(input) => {this.phone = input}} type="tel" placeholder="Enter phone Number" name="tel"/>
+              <input ref={(input) => {this.phone = input}} type="tel" placeholder="+16471234567" name="tel"/>
             </div>
             <button type="submit">SEND</button>
+            {
+              this.state.status === 'sent' ?
+              (<div className="sms-sent">
+                Success! You will be redirected to the game when {player2Name} joins.
+              </div>)
+              : ''
+            }
           </form>
         </div>
 
