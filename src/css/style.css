@@ -30,7 +30,7 @@
 }
 .boardCell {
   background: transparent;
-  border: 1px solid #fff;
+  border: 1px solid #e0e0e0;
   border-radius: 2px;
   margin: 5px;
   width: 150px;
@@ -47,7 +47,6 @@
 }
 .boardCell:hover {
   cursor: pointer;
-  background: #fff;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 @media screen and (max-width: 768px) {
@@ -114,7 +113,6 @@ button[type=submit]:hover,
       -ms-flex-direction: column;
           flex-direction: column;
   overflow: hidden;
-  background: #ab47bc;
 }
 .gameArea .chat {
   width: 20%;
@@ -135,7 +133,7 @@ button[type=submit]:hover,
   padding: 10px;
   overflow-y: scroll;
   height: 90vh;
-  background: #ec407a;
+  background: #e0e0e0;
 }
 .gameArea .chat ul::-webkit-scrollbar {
   display: none;
@@ -150,7 +148,7 @@ button[type=submit]:hover,
   background: #80deea;
 }
 .gameArea .chat li.player-2 {
-  background: #f06292;
+  background: #a2faa3;
 }
 .gameArea .chat li.player-2 .chat-sender-name {
   padding-bottom: 10px;
@@ -168,7 +166,7 @@ button[type=submit]:hover,
 .gameArea .chat .chat-form textarea {
   width: 100%;
   padding: 10px;
-  border: none;
+  border: 1px dotted #9068be;
   font-size: 1.3rem;
   background: #fff;
   color: #333;
@@ -442,13 +440,13 @@ input::-moz-focus-inner {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #fff;
+  background: #ab47bc;
 }
 .player {
   font-size: 2rem;
   padding-right: 20px;
   padding-left: 20px;
-  color: #ff5a09;
+  color: #fff;
 }
 .SocialMediaShareButton {
   position: absolute;
