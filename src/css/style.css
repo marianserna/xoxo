@@ -131,6 +131,7 @@ button[type=submit]:hover,
 }
 .gameArea .chat ul {
   padding: 10px;
+  padding-bottom: 45px;
   overflow-y: scroll;
   height: 90vh;
   background: #e0e0e0;
@@ -145,9 +146,10 @@ button[type=submit]:hover,
   margin-bottom: 10px;
 }
 .gameArea .chat li.player-1 {
-  background: #80deea;
+  background: #212121;
 }
 .gameArea .chat li.player-1 .chat-sender-name {
+  text-align: right;
   padding-bottom: 10px;
   color: #ab47bc;
 }
@@ -155,8 +157,12 @@ button[type=submit]:hover,
   background: #fff;
 }
 .gameArea .chat li.player-2 .chat-sender-name {
+  text-align: right;
   padding-bottom: 10px;
   color: #ff5a09;
+}
+.gameArea .chat .chat-message {
+  color: #1098f7;
 }
 .gameArea .chat .chat-form {
   padding: 0;
@@ -176,6 +182,12 @@ button[type=submit]:hover,
   color: #333;
   font-weight: bolder;
   outline: none;
+}
+.SocialMediaShareButton {
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+  pointer: cursor;
 }
 .form-container {
   background: #000;
@@ -435,6 +447,48 @@ input::-moz-focus-inner {
 }
 .scoreBoard {
   height: 10vh;
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #600473;
+}
+.players {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 33%;
+  font-size: 2.2rem;
+  line-height: 2rem;
+  padding-right: 20px;
+  padding-left: 20px;
+  color: #ff5a09;
+}
+@media screen and (max-width: 670px) {
+  .players {
+    width: 50%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    font-size: 1.2rem;
+  }
+}
+.players .player {
+  margin-right: 25px;
+}
+.statusContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -444,59 +498,106 @@ input::-moz-focus-inner {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #ab47bc;
-}
-.player {
-  font-size: 2rem;
-  padding-right: 20px;
-  padding-left: 20px;
-  color: #fff;
-}
-.SocialMediaShareButton {
-  position: absolute;
-  right: 15px;
-}
-.statusContainer {
-  display: none;
-  position: absolute;
-  top: 150px;
-  left: 25px;
-  color: #fff4c5;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   font-size: 4rem;
-  background: transparent;
+  color: #fff;
+  background: #600473;
+  -webkit-transition: -webkit-transform 0.5s ease;
+  transition: -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
 }
-@media screen and (max-width: 1047px) {
-  .statusContainer {
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #333;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+.statusContainer span {
+  text-align: center;
+}
+@media screen and (max-width: 670px) {
+  .statusContainer span {
+    font-size: 2rem;
   }
 }
+.statusContainer span,
+.statusContainer button {
+  opacity: 1;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: all 1s easeInOutSine;
+  transition: all 1s easeInOutSine;
+  -webkit-transition-delay: 0.5s;
+          transition-delay: 0.5s;
+}
+.statusContainer.playing {
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+.statusContainer.playing span,
+.statusContainer.playing button {
+  opacity: 0;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
 .playAgain {
-  display: none;
+  margin-left: 0;
 }
 .turn {
-  display: none;
-  font-size: 5rem;
-  position: absolute;
-  bottom: 25px;
-  left: 25px;
+  font-size: 2.5rem;
   color: #fff;
+  margin-left: auto;
+  padding-right: 20px;
+  font-weight: bolder;
+  -webkit-transition: color 2s ease;
+  transition: color 2s ease;
+}
+.turn.my-turn {
+  -webkit-animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+          animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  color: #ff5a09;
+}
+@media screen and (max-width: 670px) {
+  .turn {
+    font-size: 1.5rem;
+    margin-top: 20px;
+  }
+}
+@-webkit-keyframes shake {
+  10%, 90% {
+    -webkit-transform: translate3d(-2px, 0, 0);
+            transform: translate3d(-2px, 0, 0);
+  }
+  20%, 80% {
+    -webkit-transform: translate3d(4px, 0, 0);
+            transform: translate3d(4px, 0, 0);
+  }
+  30%, 50%, 70% {
+    -webkit-transform: translate3d(-8px, 0, 0);
+            transform: translate3d(-8px, 0, 0);
+  }
+  40%, 60% {
+    -webkit-transform: translate3d(8px, 0, 0);
+            transform: translate3d(8px, 0, 0);
+  }
+}
+@keyframes shake {
+  10%, 90% {
+    -webkit-transform: translate3d(-2px, 0, 0);
+            transform: translate3d(-2px, 0, 0);
+  }
+  20%, 80% {
+    -webkit-transform: translate3d(4px, 0, 0);
+            transform: translate3d(4px, 0, 0);
+  }
+  30%, 50%, 70% {
+    -webkit-transform: translate3d(-8px, 0, 0);
+            transform: translate3d(-8px, 0, 0);
+  }
+  40%, 60% {
+    -webkit-transform: translate3d(8px, 0, 0);
+            transform: translate3d(8px, 0, 0);
+  }
 }
 html {
   font-size: 62.5%;
@@ -517,7 +618,7 @@ body {
   }
 }
 .letter {
-  font-family: 'Anonymous Pro', monospace;
+  font-family: 'Fredoka One', cursive;
 }
 form label {
   font-family: 'Anonymous Pro', monospace;

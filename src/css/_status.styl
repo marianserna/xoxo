@@ -1,21 +1,42 @@
 .statusContainer
-  display none
   position absolute
-  top 150px
-  left 25px
-  color #FFF4C5
+  top 0
+  left 0
+  right 0
+  bottom 0
+  display flex
+  justify-content center
+  align-items center
+  flex-direction column
   font-size 4rem
-  background transparent
-  @media screen and (max-width: 1047px)
-    top 0
-    left 0
-    width 100vw
-    height 100vh
-    background #333333
-    display flex
-    flex-direction column
-    align-items center
-    justify-content center
+  color #FFF
+  background #600473
+  transition transform 0.5s ease
+
+  span
+    text-align center
+
+    @media screen and (max-width: 670px)
+      font-size 2rem
+
+  span, button
+    opacity 1
+    transform scale(1)
+    transition all 1s easeInOutSine
+    transition-delay 0.5s
+
+  &.playing
+    transform translateX(-100%)
+
+    span, button
+      opacity 0
+      transform scale(0)
+  //
+  // @media screen and (max-width: 1047px)
+  //   display flex
+  //   flex-direction column
+  //   align-items center
+  //   justify-content center
 
 .playAgain
-  display none
+  margin-left 0

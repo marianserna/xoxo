@@ -5,6 +5,10 @@ import Turn from './Turn';
 import Status from './Status';
 import Chat from './Chat';
 import base from '../base';
+import {
+  ShareButtons,
+  generateShareIcon
+} from 'react-share';
 
 class Game extends React.Component {
   constructor() {
@@ -119,7 +123,7 @@ class Game extends React.Component {
 
     if (xWon) {
       game.player1Wins += 1;
-      game.statusMessage = `${game.player1Name} has won!`;
+      game.statusMessage = `Rejoice! ${game.player1Name} has won! 🏆`;
     }
 
     const oWon = winningCombos.some((combo) => {
@@ -128,7 +132,7 @@ class Game extends React.Component {
 
     if (oWon) {
       game.player2Wins += 1;
-      game.statusMessage = `${game.player2Name} has won!`;
+      game.statusMessage = `Aleluya! ${game.player2Name} has won! 🍺`;
     }
 
     if (xWon || oWon) {
@@ -143,7 +147,7 @@ class Game extends React.Component {
       }
       if (emptyCell === 0) {
         game.status = "draw";
-        game.statusMessage = "Game Over...";
+        game.statusMessage = "Shoot, Game Over...Sorry Losers 😂";
       }
     }
 
@@ -151,6 +155,11 @@ class Game extends React.Component {
   }
 
   render() {
+    const {
+      FacebookShareButton
+    } = ShareButtons;
+
+    const FacebookIcon = generateShareIcon('facebook');
 
     if(!this.state.game) {
       return (
@@ -166,14 +175,14 @@ class Game extends React.Component {
           player2Name={this.state.game.player2Name}
           player1Wins={this.state.game.player1Wins}
           player2Wins={this.state.game.player2Wins}
-        />
-
-        <Turn
-          className="turn"
-          player1Name={this.state.game.player1Name}
-          player2Name={this.state.game.player2Name}
-          turn={this.state.game.turn}
-        />
+        >
+          <Turn
+            player1Name={this.state.game.player1Name}
+            player2Name={this.state.game.player2Name}
+            isMyTurn={this.isMyTurn()}
+            turn={this.state.game.turn}
+          />
+        </ScoreBoard>
 
         <div className="gameArea">
           <Board
@@ -188,10 +197,21 @@ class Game extends React.Component {
           />
         </div>
 
-        {
-          (this.state.game.status === "winner" ||  this.state.game.status === "draw") &&
-          <Status status={this.state.game.status} statusMessage={this.state.game.statusMessage} resetBoard={this.resetBoard} />
-        }
+
+        <Status
+          status={this.state.game.status}
+          statusMessage={this.state.game.statusMessage}
+          resetBoard={this.resetBoard}
+        />
+
+
+        <FacebookShareButton
+          url='https://xoxoreactgame.herokuapp.com/'
+          title='xoxo Game'
+          description ='Play the game of your life. Yes, of your life.' picture='https://xoxoreactgame.herokuapp.com/xoxo.jpg'
+        >
+          <FacebookIcon size={32} />
+        </FacebookShareButton>
       </div>
     )
   }

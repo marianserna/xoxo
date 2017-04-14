@@ -1,7 +1,34 @@
 .turn
-  display none
-  font-size 5rem
-  position absolute
-  bottom 25px
-  left 25px
-  color #fff
+  font-size 2.5rem
+  color #FFF
+  margin-left auto
+  padding-right 20px
+  font-weight bolder
+  transition color 2s ease
+
+  &.my-turn
+    animation shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform translate3d(0, 0, 0)
+    color #FF5A09
+
+  @media screen and (max-width: 670px)
+    font-size 1.5rem
+    margin-top 20px
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-2px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(4px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-8px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(8px, 0, 0);
+  }
+}
