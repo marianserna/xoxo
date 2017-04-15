@@ -187,9 +187,10 @@ button[type=submit]:hover,
   position: absolute;
   left: 15px;
   bottom: 15px;
+  pointer: cursor;
 }
 @media screen and (max-width: 730px) {
-  .SocialMediaShareButton pointer cursor {
+  .SocialMediaShareButton {
     display: none;
   }
 }
