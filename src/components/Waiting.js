@@ -7,6 +7,7 @@ export default class Waiting extends React.Component {
     super();
     this.state = {
       game: {},
+      status: 'pending',
       url: '',
       copied: false
     }

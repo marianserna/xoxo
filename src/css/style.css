@@ -187,7 +187,11 @@ button[type=submit]:hover,
   position: absolute;
   left: 15px;
   bottom: 15px;
-  pointer: cursor;
+}
+@media screen and (max-width: 730px) {
+  .SocialMediaShareButton pointer cursor {
+    display: none;
+  }
 }
 .form-container {
   background: #000;
@@ -648,7 +652,8 @@ form label {
   background: #600473;
 }
 .wait-heading,
-.copy-link {
+.copy-link,
+.sms-sent {
   text-align: center;
   color: #fff;
   font-size: 2rem;
@@ -657,34 +662,47 @@ form label {
 }
 @media screen and (max-width: 600px) {
   .wait-heading,
-  .copy-link {
+  .copy-link,
+  .sms-sent {
     font-size: 1.5rem;
     margin-left: 20px;
     margin-right: 20px;
   }
+}
+.sms-sent {
+  margin-bottom: 25px;
+  color: #76ff03;
 }
 .waiting-form {
   padding: 0;
   margin: 0;
   width: 100%;
   height: auto;
-  margin: 30px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.waiting-form .player-input {
+  -ms-flex-item-align: center;
+      align-self: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 0;
 }
 .waiting-form .player-input input {
   margin-left: 0;
   margin-bottom: 20px;
-  -ms-flex-item-align: center;
-      align-self: center;
 }
 .waiting-form button {
   -ms-flex-item-align: center;
       align-self: center;
   margin: 0;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 .copy-link {
   margin-top: 0;
   font-size: 1.5rem;
+  margin-top: 25px;
   margin-bottom: 50px;
 }
 .link {
