@@ -1,0 +1,71 @@
+.chat
+  width 20%
+  height 90vh
+  margin-top 10vh
+  position absolute
+  background #E0E0E0
+  border none
+  top 0
+  right 0
+
+  @media screen and (max-width: 730px)
+    display none
+    padding-top 70px
+
+    &.chat-active
+      display block
+      width 100vw
+
+  ul
+    padding 10px
+    padding-bottom 45px
+    overflow-y scroll
+    height 100%
+    background #E0E0E0
+
+  ul::-webkit-scrollbar
+    display: none
+
+  li
+    color #333333
+    padding 10px
+    font-size 1.5rem
+    margin-bottom 10px
+
+  li.player-1
+    background #333333
+    .chat-sender-name
+      text-align right
+      padding-bottom 10px
+      color #AB47BC
+      font-weight bolder
+
+  li.player-2
+    background #FFF
+    .chat-sender-name
+      text-align right
+      padding-bottom 10px
+      color #FF5A09
+      font-weight bolder
+
+  .chat-message
+    color #1098F7
+
+  .chat-form
+    padding 0
+    margin 0
+    width 100%
+    position absolute
+    height auto
+    left 0
+    bottom 0
+
+    textarea
+      width 100%
+      padding 10px
+      border 1px dotted #9068BE
+      font-size 1.3rem
+      background #FFF
+      color #333333
+      font-weight bolder
+      outline none

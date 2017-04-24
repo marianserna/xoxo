@@ -97,6 +97,82 @@ button[type=submit]:hover,
     margin-left: 0;
   }
 }
+.chat {
+  width: 20%;
+  height: 90vh;
+  margin-top: 10vh;
+  position: absolute;
+  background: #e0e0e0;
+  border: none;
+  top: 0;
+  right: 0;
+}
+@media screen and (max-width: 730px) {
+  .chat {
+    display: none;
+    padding-top: 70px;
+  }
+  .chat.chat-active {
+    display: block;
+    width: 100vw;
+  }
+}
+.chat ul {
+  padding: 10px;
+  padding-bottom: 45px;
+  overflow-y: scroll;
+  height: 100%;
+  background: #e0e0e0;
+}
+.chat ul::-webkit-scrollbar {
+  display: none;
+}
+.chat li {
+  color: #333;
+  padding: 10px;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+.chat li.player-1 {
+  background: #333;
+}
+.chat li.player-1 .chat-sender-name {
+  text-align: right;
+  padding-bottom: 10px;
+  color: #ab47bc;
+  font-weight: bolder;
+}
+.chat li.player-2 {
+  background: #fff;
+}
+.chat li.player-2 .chat-sender-name {
+  text-align: right;
+  padding-bottom: 10px;
+  color: #ff5a09;
+  font-weight: bolder;
+}
+.chat .chat-message {
+  color: #1098f7;
+}
+.chat .chat-form {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  position: absolute;
+  height: auto;
+  left: 0;
+  bottom: 0;
+}
+.chat .chat-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px dotted #9068be;
+  font-size: 1.3rem;
+  background: #fff;
+  color: #333;
+  font-weight: bolder;
+  outline: none;
+}
 .gameArea {
   width: 100vw;
   display: -webkit-box;
@@ -114,80 +190,26 @@ button[type=submit]:hover,
           flex-direction: column;
   overflow: hidden;
 }
-.gameArea .chat {
-  width: 20%;
-  height: 90vh;
-  margin-top: 10vh;
+.toggle-chat {
+  display: none;
   position: absolute;
-  background: #fff;
-  border: none;
-  top: 0;
-  right: 0;
+  top: 15vh;
+  right: 20px;
+  z-index: 20;
+  cursor: pointer;
+  font-weight: bolder;
+  color: #e91e63;
 }
 @media screen and (max-width: 730px) {
-  .gameArea .chat {
-    display: none;
+  .toggle-chat {
+    display: block;
   }
-}
-.gameArea .chat ul {
-  padding: 10px;
-  padding-bottom: 45px;
-  overflow-y: scroll;
-  height: 90vh;
-  background: #e0e0e0;
-}
-.gameArea .chat ul::-webkit-scrollbar {
-  display: none;
-}
-.gameArea .chat li {
-  color: #333;
-  padding: 10px;
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-.gameArea .chat li.player-1 {
-  background: #212121;
-}
-.gameArea .chat li.player-1 .chat-sender-name {
-  text-align: right;
-  padding-bottom: 10px;
-  color: #ab47bc;
-}
-.gameArea .chat li.player-2 {
-  background: #fff;
-}
-.gameArea .chat li.player-2 .chat-sender-name {
-  text-align: right;
-  padding-bottom: 10px;
-  color: #ff5a09;
-}
-.gameArea .chat .chat-message {
-  color: #1098f7;
-}
-.gameArea .chat .chat-form {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  position: absolute;
-  height: auto;
-  left: 0;
-  bottom: 0;
-}
-.gameArea .chat .chat-form textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px dotted #9068be;
-  font-size: 1.3rem;
-  background: #fff;
-  color: #333;
-  font-weight: bolder;
-  outline: none;
 }
 .SocialMediaShareButton {
   position: absolute;
   left: 15px;
   bottom: 15px;
-  pointer: cursor;
+  cursor: pointer;
 }
 @media screen and (max-width: 730px) {
   .SocialMediaShareButton {
@@ -514,6 +536,7 @@ input::-moz-focus-inner {
   transition: -webkit-transform 0.5s ease;
   transition: transform 0.5s ease;
   transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+  z-index: 50;
 }
 .statusContainer span {
   text-align: center;

@@ -6,75 +6,24 @@
   flex-direction column
   overflow hidden
 
-  .chat
-    width 20%
-    height 90vh
-    margin-top 10vh
-    position absolute
-    background #FFF
-    border none
-    top 0
-    right 0
+.toggle-chat
+  display none
+  position absolute
+  top 15vh
+  right 20px
+  z-index 20
+  cursor pointer
+  font-weight bolder
+  color #E91E63
 
-    @media screen and (max-width: 730px)
-      display none
-
-    ul
-      padding 10px
-      padding-bottom 45px
-      overflow-y scroll
-      height 90vh
-      background #E0E0E0
-    ul::-webkit-scrollbar
-      display: none
-
-    li
-      color #333333
-      padding 10px
-      font-size 1.5rem
-      margin-bottom 10px
-
-    li.player-1
-      background #212121
-      .chat-sender-name
-        text-align right
-        padding-bottom 10px
-        color #AB47BC
-
-    li.player-2
-      background #FFF
-      .chat-sender-name
-        text-align right
-        padding-bottom 10px
-        color #FF5A09
-
-    .chat-message
-      color #1098F7
-
-    .chat-form
-      padding 0
-      margin 0
-      width 100%
-      position absolute
-      height auto
-      left 0
-      bottom 0
-
-      textarea
-        width 100%
-        padding 10px
-        border 1px dotted #9068BE
-        font-size 1.3rem
-        background #FFF
-        color #333333
-        font-weight bolder
-        outline none
+  @media screen and (max-width: 730px)
+    display block
 
 .SocialMediaShareButton
   position absolute
   left 15px
   bottom 15px
-  pointer cursor
+  cursor pointer
 
   @media screen and (max-width: 730px)
     display none

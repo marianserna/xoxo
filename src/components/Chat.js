@@ -47,7 +47,7 @@ export default class Chat extends React.Component {
 
   render() {
     return(
-      <div className="chat">
+      <div className={this.props.className}>
         <ul ref={(ul) => this.ul = ul}>
           {this.renderMessages()}
         </ul>

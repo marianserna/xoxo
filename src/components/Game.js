@@ -19,7 +19,8 @@ class Game extends React.Component {
     this.token = localStorage.getItem('token');
 
     this.state = {
-      game: false
+      game: false,
+      showChat: false
     }
   }
 
@@ -62,7 +63,13 @@ class Game extends React.Component {
     this.setState({game});
   }
 
-  resetBoard() {
+  toggleChat = (e) => {
+    this.setState({
+      showChat: !this.state.showChat
+    });
+  }
+
+  resetBoard = () => {
     const game = {...this.state.game};
     for (let i = 1; i <= 9; i++) {
       game.board[i] = "";
@@ -185,13 +192,21 @@ class Game extends React.Component {
         </ScoreBoard>
 
         <div className="gameArea">
+          <div
+            className="toggle-chat"
+            onClick={(e) => this.toggleChat(e)}
+          >
+            {this.state.showChat ? 'GAME' : 'CHAT'}
+          </div>
+
           <Board
             className="board"
             board={this.state.game.board}
             recordTurn={this.recordTurn}
           />
+
           <Chat
-            className="chat"
+            className={`chat ${this.state.showChat ? 'chat-active' : ''}`}
             chat={this.state.game.chat}
             sendChatMsg={this.sendChatMsg}
           />
