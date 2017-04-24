@@ -167,7 +167,7 @@ button[type=submit]:hover,
   width: 100%;
   padding: 10px;
   border: 1px dotted #9068be;
-  font-size: 1.3rem;
+  font-size: 16px;
   background: #fff;
   color: #333;
   font-weight: bolder;
@@ -743,6 +743,8 @@ form label {
 @media screen and (max-width: 600px) {
   .link {
     font-size: 1.2rem;
+    display: block;
+    line-height: 2rem;
     margin-left: 20px;
     margin-right: 20px;
   }
